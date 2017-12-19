@@ -1,0 +1,2 @@
+class RsasController < ApplicationController
+end
