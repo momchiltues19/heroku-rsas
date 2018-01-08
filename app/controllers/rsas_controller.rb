@@ -14,4 +14,11 @@ class RsasController < ApplicationController
 		@RSA.save
 		redirect_to @RSA
 	end
+	def show
+		numbers = Hash.new
+		numbers[:n] = key.n
+		numbers[:e] = key.e
+		numbers[:d] = key.d
+		render json: numbers
+	end
 end
