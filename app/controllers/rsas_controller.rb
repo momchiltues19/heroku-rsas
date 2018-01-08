@@ -2,9 +2,6 @@ require 'openssl'
 
 class RsasController < ApplicationController
 	protect_from_forgery except: :create
-	def index
-	end
-
 	def create
 		if params[:n] && params[:e] && params[:d] then 
 			key.n = params[:n].to_i
