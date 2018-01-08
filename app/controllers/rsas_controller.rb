@@ -7,7 +7,6 @@ class RsasController < ApplicationController
 			key.n = params[:n].to_i
 			key.e = params[:e].to_i
 			key.d = params[:d].to_i
-		end
 		else
 			key = OpenSSL::PKey::RSA.new 2048
 		end	
