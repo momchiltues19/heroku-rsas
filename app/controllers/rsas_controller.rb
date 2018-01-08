@@ -2,6 +2,8 @@ require 'openssl'
 
 class RsasController < ApplicationController
 	protect_from_forgery except: :create
+	def index
+	end
 	def create
 		if params[:n] && params[:e] && params[:d] then 
 			key.n = params[:n].to_i
@@ -15,10 +17,8 @@ class RsasController < ApplicationController
 		redirect_to @RSA
 	end
 	def show
-		numbers = Hash.new
-		numbers[:n] = key.n
-		numbers[:e] = key.e
-		numbers[:d] = key.d
+		numbers = Array.new
+		numbers[:n] = key.n, key.e, key.d
 		render json: numbers
 	end
 end
