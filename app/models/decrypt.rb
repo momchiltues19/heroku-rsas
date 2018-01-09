@@ -1,0 +1,2 @@
+class Decrypt < ApplicationRecord
+end
