@@ -10,15 +10,18 @@ class RsasController < ApplicationController
 			key.e = params[:e].to_i
 			key.d = params[:d].to_i
 		else
-			key = OpenSSL::PKey::RSA.new 2048
+			key = OpenSSL::PKey::RSA.new 200
 		end	
 		@RSA = Rsa.new(n: key.n, e: key.e, d: key.d)
 		@RSA.save
-		redirect_to @RSA
+		render plain: @RSA.id
 	end
 	def show
-		numbers = Array.new
-		numbers[:n] = key.n, key.e, key.d
+		key = Rsa.find(params[:id])
+		numbers= Hash.new
+		numbers[:n] = key.n
+		numbers[:e] = key.e
+		numbers[:d] = key.d
 		render json: numbers
 	end
 end
