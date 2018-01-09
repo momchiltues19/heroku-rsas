@@ -13,14 +13,14 @@ class EncryptController < ApplicationController
 		encoded = Base64.strict_encode64(encrypt)
 		@encrypted = Encrypt.new(message: encoded, id_message: key_id)
 		@encrypted.save
-		render plain: @encrypted.message
+		render plain: @encrypted.id
 	end	
 	
 	def show
 		@encrypted = Encrypt.find(params[:id])
 		numbers = Hash.new
 		numbers[:encrypted] = @encrypted.message
-		render json: par
+		render json: numbers
 	end
 end
 

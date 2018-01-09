@@ -1,5 +1,5 @@
 class DecryptController < ApplicationController
-	skip_before_action :verify_authenticity_token 
+	skip_before_action :verify_authenticity_token
 	def create
 		key_id = params[:id]
 		key = OpenSSL::PKey::RSA.new 200
